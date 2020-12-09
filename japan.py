@@ -1,18 +1,25 @@
 import sys
 
+# Reading the message the user provided
 message = sys.argv[1]
+words = message.split()
 
-data = message.split()
+# Building a list of word lengths
+# so I can use the largest number later
+wordLengths = []
+for word in words:
+    wordLengths.append(len(word))
 
-i = 0
-j = 15
+charIndex = 0
+line = max(wordLengths)
 
-while j > 0:
-	for word in data:
-		if i < len(word):
-			print(word[i] + " ", end='')
-		else:
-			print("  ", end='')
-	print('')
-	i = i + 1
-	j = j - 1
+while line > 0:
+    for word in words:
+#    for word in reversed(words):
+        if charIndex < len(word):
+            print(word[charIndex] + " ", end='')
+        else:
+            print("  ", end='')
+    print('')
+    charIndex += 1
+    line -= 1
